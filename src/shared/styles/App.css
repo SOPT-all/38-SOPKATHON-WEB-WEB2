@@ -1,6 +1,12 @@
 #root {
   width: 375px;
+  max-width: 375px;
   min-height: 100dvh;
   margin: 0 auto;
   background-color: var(--color-background);
+}
+
+#root > * {
+  width: 100%;
+  max-width: 375px;
 }
