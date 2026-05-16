@@ -78,7 +78,7 @@ const HomeHeader = () => {
                     className={cn(
                       'typo-body-r-14 flex flex-1 items-center justify-center rounded-[0.8rem] px-[0.4rem] py-[0.6rem] text-neutral-300',
                       isSelected &&
-                        'typo-body-sb-14 border border-primary-500 bg-background text-primary-500',
+                        'typo-body-sb-14 border-primary-500 bg-background text-primary-500 border',
                     )}
                   >
                     {label}

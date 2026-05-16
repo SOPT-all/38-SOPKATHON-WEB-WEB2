@@ -17,7 +17,7 @@ const HomeQuestionCard = ({
   return (
     <section className='flex w-[32.7rem] flex-col gap-[2.7rem] overflow-hidden rounded-[1.6rem] bg-white p-[1.6rem]'>
       <div className='flex flex-col gap-[1.9rem]'>
-        <span className='typo-body-sb-14 w-fit rounded-[0.4rem] bg-primary-50 px-[0.8rem] py-[0.2rem] text-primary-500'>
+        <span className='typo-body-sb-14 bg-primary-50 text-primary-500 w-fit rounded-[0.4rem] px-[0.8rem] py-[0.2rem]'>
           오늘의 질문
         </span>
 
