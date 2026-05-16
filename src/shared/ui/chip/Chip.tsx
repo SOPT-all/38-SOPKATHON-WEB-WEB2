@@ -7,12 +7,19 @@ const chipVariants = cva(
   {
     variants: {
       size: {
-        normal: 'w-[8rem] bg-primary-50 text-primary-500 typo-body-sb-14',
-        small: 'w-[5.3rem] rounded-full bg-primary-500 text-white typo-body-r-14',
+        normal: 'w-[8rem] typo-body-sb-14',
+        small: 'w-[5.3rem] rounded-full typo-body-r-14',
+      },
+      variant: {
+        question: 'bg-primary-50 text-primary-500',
+        me: 'bg-primary-500 text-white',
+        you: 'bg-neutral-400 text-white',
+        youYet: 'bg-neutral-200 text-white',
       },
     },
     defaultVariants: {
       size: 'normal',
+      variant: 'question',
     },
   },
 );
@@ -24,10 +31,11 @@ export default function Chip({
   children,
   className,
   size,
+  variant,
   ...props
 }: ChipProps) {
   return (
-    <span className={cn(chipVariants({ size }), className)} {...props}>
+    <span className={cn(chipVariants({ size, variant }), className)} {...props}>
       {children}
     </span>
   );
