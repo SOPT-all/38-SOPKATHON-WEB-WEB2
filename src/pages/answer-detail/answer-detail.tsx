@@ -2,7 +2,7 @@ import BackButton from '@/shared/ui/BackButton';
 
 const AnswerDetailPage = () => {
   return (
-    <main className='min-h-dvh bg-background'>
+    <main className='bg-background min-h-dvh'>
       <header className='flex items-center px-[2rem] pt-[1.6rem] pb-[1.2rem]'>
         <BackButton delta={-1} />
       </header>
