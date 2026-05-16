@@ -6,6 +6,7 @@ import ArchivePage from '@/pages/archive/archive';
 import HomePage from '@/pages/home/home';
 import OnboardingPage from '@/pages/onboarding/onboarding';
 import AnswerLayout from '@/routes/answerLayout';
+import DevSetParticipant from '@/routes/dev-setup';
 import InviteHandler from '@/routes/invite-handler';
 import Layout from '@/routes/layout';
 import { routePath } from '@/routes/path';
@@ -34,4 +35,7 @@ export const router = createBrowserRouter([
     path: routePath.INVITE,
     element: <InviteHandler />,
   },
+  // TODO: 시연 종료 후 제거 — 사전 세팅된 룸으로 즉시 진입
+  { path: '/setparent', element: <DevSetParticipant role='parent' /> },
+  { path: '/setchildren', element: <DevSetParticipant role='child' /> },
 ]);

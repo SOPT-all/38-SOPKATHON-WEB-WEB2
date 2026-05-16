@@ -1,5 +1,6 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
+import { getOptionalStoredBrowserToken } from '@/pages/home/utils/home-session';
 import {
   bottomNavigationHistoryKey,
   isBottomNavigationPath,
@@ -20,6 +21,12 @@ const getAnswerBackPath = () => {
 
 const AnswerLayout = () => {
   const { pathname } = useLocation();
+  const hasToken = Boolean(getOptionalStoredBrowserToken());
+
+  if (!hasToken) {
+    return <Navigate to={routePath.ONBOARDING} replace />;
+  }
+
   const isAnswerDetailPage = pathname !== routePath.ANSWER;
 
   return (

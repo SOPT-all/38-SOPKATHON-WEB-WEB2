@@ -36,7 +36,7 @@ const OnboardingPage = () => {
 
       try {
         const response = await createRoom();
-        const { browserToken, inviteUrl, participantId, role, roomId } =
+        const { browserToken, inviteToken, participantId, role, roomId } =
           response.data;
 
         setHomeSession({
@@ -45,12 +45,21 @@ const OnboardingPage = () => {
           roomId,
           userRole: serverRoleToUserRole(role),
         });
-        setInviteLink(inviteUrl);
+        setInviteLink(`${window.location.origin}/invite/${inviteToken}`);
         console.log('방 생성 API 요청 성공', response);
+
+        // 시연용: 5초 후 자동 home 이동
+        window.setTimeout(() => {
+          void navigate(routePath.HOME, { replace: true });
+        }, 5000);
       } catch (error) {
         console.error('방 생성 API 요청 실패', error);
       }
     })();
+  }, [navigate]);
+
+  const handleStartClick = useCallback(() => {
+    void navigate(routePath.HOME);
   }, [navigate]);
 
   const copyInviteLink = useCallback(async () => {
@@ -107,7 +116,11 @@ const OnboardingPage = () => {
         </button>
       </div>
 
-      <TextButton className='mt-[14.9rem] w-full max-w-[32.7rem]' size='large'>
+      <TextButton
+        className='mt-[14.9rem] w-full max-w-[32.7rem]'
+        size='large'
+        onClick={handleStartClick}
+      >
         시작하기
       </TextButton>
 

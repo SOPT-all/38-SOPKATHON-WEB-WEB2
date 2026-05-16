@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
+import { getOptionalStoredBrowserToken } from '@/pages/home/utils/home-session';
+import { routePath } from '@/routes/path';
 import BottomNavigation from '@/shared/ui/BottomNavigation';
 
 import {
@@ -11,12 +12,18 @@ import {
 
 const Layout = () => {
   const { pathname } = useLocation();
+  const hasToken = Boolean(getOptionalStoredBrowserToken());
 
   useEffect(() => {
+    if (!hasToken) return;
     if (isBottomNavigationPath(pathname)) {
       sessionStorage.setItem(bottomNavigationHistoryKey, pathname);
     }
-  }, [pathname]);
+  }, [pathname, hasToken]);
+
+  if (!hasToken) {
+    return <Navigate to={routePath.ONBOARDING} replace />;
+  }
 
   return (
     <>
