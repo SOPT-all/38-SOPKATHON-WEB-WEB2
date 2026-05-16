@@ -1,2 +1,10 @@
-// 기록 페이지 관련 API 함수들 (전체 답변 기록 조회)
-export {};
+export interface RecordItem {
+  id: number;
+  question: string;
+  date: string;
+}
+
+// TODO: 서버 endpoint 확정되면 axios 호출로 교체
+export const getRecords = async (): Promise<RecordItem[]> => {
+  return Promise.resolve([]);
+};
