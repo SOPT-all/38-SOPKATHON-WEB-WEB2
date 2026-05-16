@@ -1,2 +1,2 @@
 // 공통 유틸 함수들
-export {};
+export { uploadFile } from './upload-file';
