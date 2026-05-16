@@ -1,2 +1,2 @@
-// 홈 페이지 관련 API 함수들 (오늘의 질문, 최근 답변 조회)
-export {};
+export { getHome } from './get-home';
+export { swapRoomRoles } from './swap-room-roles';

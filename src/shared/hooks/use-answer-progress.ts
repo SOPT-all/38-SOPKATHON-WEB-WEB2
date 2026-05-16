@@ -1,35 +1,78 @@
+import { useEffect, useState } from 'react';
+
+import { getHome, type GetHomeData } from '@/pages/home/api/get-home';
+import { type AnswerStep, type UserRole } from '@/pages/home/types';
+import { getStoredBrowserToken } from '@/pages/home/utils/home-session';
+import { serverRoleToUserRole } from '@/pages/home/utils/role';
 import {
-  type AnswerStep,
-  mockAnswerProgress,
-  type UserRole,
-} from '@/shared/mocks/answer-progress.mock';
+  getStoredUserRole,
+  setStoredUserRole,
+} from '@/pages/home/utils/user-role-storage';
 
 interface UseAnswerProgressReturn {
   bubbleText: string;
   currentStep: AnswerStep;
   hasAnsweredToday: boolean;
+  question: string;
   title: string;
   userRole: UserRole;
 }
 
-const stepTitleByStep: Record<AnswerStep, string> = {
-  1: '아직은 머뭇거리는 중이에요.',
-  2: '한 걸음씩 다가가는 중이에요.',
-  3: '거리가 좁혀지고 있어요!',
-  4: '드디어 맞닿았어요!',
+interface AnswerProgressState {
+  bubbleText: string;
+  currentStep: AnswerStep;
+  hasAnsweredToday: boolean;
+  question: string;
+  title: string;
+  userRole: UserRole;
+}
+
+const initialAnswerProgressState: AnswerProgressState = {
+  bubbleText: '답장을 받지 못해 멀어지는 중이에요..',
+  currentStep: 1,
+  hasAnsweredToday: false,
+  question: '가장 행복했던 순간은 언제인가요?',
+  title: '아직은 머뭇거리는 중이에요.',
+  userRole: getStoredUserRole(),
 };
 
-const answeredBubbleText = '오늘도 선뜻 다가가볼까요?';
-const unansweredBubbleText = '답장을 받지 못해 멀어지는 중이에요..';
-
-export const useAnswerProgress = (): UseAnswerProgressReturn => {
-  const { currentStep, hasAnsweredToday, userRole } = mockAnswerProgress;
+const getAnswerProgressState = ({
+  progress,
+  selectedMode,
+  statusMessage,
+  todayQuestion,
+}: GetHomeData): AnswerProgressState => {
+  const userRole = serverRoleToUserRole(selectedMode);
 
   return {
-    bubbleText: hasAnsweredToday ? answeredBubbleText : unansweredBubbleText,
-    currentStep,
-    hasAnsweredToday,
-    title: stepTitleByStep[currentStep],
+    bubbleText: statusMessage,
+    currentStep: progress.currentStep,
+    hasAnsweredToday: todayQuestion.answered,
+    question: todayQuestion.content,
+    title: progress.message,
     userRole,
   };
+};
+
+export const useAnswerProgress = (): UseAnswerProgressReturn => {
+  const [answerProgress, setAnswerProgress] = useState<AnswerProgressState>(
+    initialAnswerProgressState,
+  );
+
+  useEffect(() => {
+    void (async () => {
+      try {
+        const response = await getHome(getStoredBrowserToken());
+        const nextAnswerProgress = getAnswerProgressState(response.data);
+
+        setAnswerProgress(nextAnswerProgress);
+        setStoredUserRole(nextAnswerProgress.userRole);
+        console.log('홈 조회 API 요청 성공', response);
+      } catch (error) {
+        console.error('홈 조회 API 요청 실패', error);
+      }
+    })();
+  }, []);
+
+  return answerProgress;
 };

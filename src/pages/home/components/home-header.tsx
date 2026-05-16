@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { type UserRole } from '@/pages/home/types';
 import { IcMy } from '@/shared/assets/icons';
 import { imgLogo } from '@/shared/assets/images';
-import { useUserRole } from '@/shared/hooks';
-import { type UserRole } from '@/shared/mocks/answer-progress.mock';
+import { useUserRole } from '@/shared/hooks/use-user-role';
 import { cn } from '@/shared/utils/cn';
 
 const roleOptions = [
@@ -13,7 +13,7 @@ const roleOptions = [
 
 const HomeHeader = () => {
   const [isRoleMenuOpen, setIsRoleMenuOpen] = useState(false);
-  const { setUserRole, userRole } = useUserRole();
+  const { isSwappingRole, selectUserRole, userRole } = useUserRole();
   const roleMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const HomeHeader = () => {
   }, []);
 
   const handleRoleSelect = (role: UserRole) => {
-    setUserRole(role);
+    selectUserRole(role);
     setIsRoleMenuOpen(false);
   };
 
@@ -72,6 +72,7 @@ const HomeHeader = () => {
                     type='button'
                     role='menuitemradio'
                     aria-checked={isSelected}
+                    disabled={isSwappingRole}
                     onClick={() => {
                       handleRoleSelect(value);
                     }}
