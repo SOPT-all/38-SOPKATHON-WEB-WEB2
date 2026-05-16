@@ -1,2 +1,3 @@
-// 기록 페이지 전용 컴포넌트들 (기록 리스트, 기록 카드 등)
-export {};
+import RecordCard from '@/pages/archive/components/record-card/record-card';
+
+export { RecordCard };
