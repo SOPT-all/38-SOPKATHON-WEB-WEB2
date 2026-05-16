@@ -1,2 +1,24 @@
-// 홈 페이지 관련 API 함수들 (오늘의 질문, 최근 답변 조회)
-export {};
+import { privateInstance } from '@/shared/api/axios';
+
+export interface HomeData {
+  selectedMode: string;
+  statusMessage: string;
+  progress: {
+    currentStep: number;
+    totalStep: number;
+    message: string;
+  };
+  todayQuestion: {
+    roomQuestionId: number;
+    content: string;
+    answered: boolean;
+  };
+}
+
+export const getHome = async (): Promise<HomeData> => {
+  const browserToken = localStorage.getItem('browserToken') ?? '';
+  const res = await privateInstance.get<{ data: HomeData }>('/api/home', {
+    headers: { Authorization: browserToken },
+  });
+  return res.data.data;
+};

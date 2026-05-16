@@ -6,6 +6,7 @@ import ArchivePage from '@/pages/archive/archive';
 import HomePage from '@/pages/home/home';
 import OnboardingPage from '@/pages/onboarding/onboarding';
 import AnswerLayout from '@/routes/answerLayout';
+import InviteHandler from '@/routes/invite-handler';
 import Layout from '@/routes/layout';
 import { routePath } from '@/routes/path';
 
@@ -28,5 +29,9 @@ export const router = createBrowserRouter([
   {
     path: routePath.ONBOARDING,
     element: <OnboardingPage />,
+  },
+  {
+    path: routePath.INVITE,
+    element: <InviteHandler />,
   },
 ]);

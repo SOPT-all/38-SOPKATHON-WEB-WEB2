@@ -30,7 +30,7 @@ export const privateInstance = axios.create({
 
 privateInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('browserToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
