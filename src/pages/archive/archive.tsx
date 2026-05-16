@@ -8,7 +8,7 @@ const ArchivePage = () => {
 
   useEffect(() => {
     void getRecords()
-      .then((data: any) => setRecords(data))
+      .then((data) => setRecords(data))
       .catch(() => {});
   }, []);
 
