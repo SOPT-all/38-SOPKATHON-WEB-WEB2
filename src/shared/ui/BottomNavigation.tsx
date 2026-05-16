@@ -28,7 +28,7 @@ const BottomNavigation = () => {
   return (
     <nav
       aria-label='하단 내비게이션'
-      className='fixed bottom-0 left-1/2 z-10 w-full max-w-[43rem] -translate-x-1/2 overflow-hidden rounded-t-[1.6rem] border-t border-neutral-100 bg-white p-[0.8rem]'
+      className='fixed bottom-0 left-1/2 z-10 w-full max-w-[37.5rem] -translate-x-1/2 overflow-hidden rounded-t-[1.6rem] border-t border-neutral-100 bg-white p-[0.8rem]'
     >
       <ul className='flex items-center justify-center'>
         {navigationItems.map(({ label, path, Icon, ActiveIcon }) => (
