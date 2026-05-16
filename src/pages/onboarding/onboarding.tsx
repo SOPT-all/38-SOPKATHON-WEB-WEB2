@@ -1,17 +1,58 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { type ServerUserRole, type UserRole } from '@/pages/home/types';
+import { setHomeSession } from '@/pages/home/utils/home-session';
+import { createRoom } from '@/pages/onboarding/api';
 import { IcCopy } from '@/shared/assets/icons';
 import { TextButton } from '@/shared/ui';
 
 const INVITE_LINK = 'meomoot.site';
 
+const serverRoleToUserRole = (role: ServerUserRole): UserRole =>
+  role === 'CHILD' ? 'child' : 'parent';
+
 const OnboardingPage = () => {
+  const [inviteLink, setInviteLink] = useState(INVITE_LINK);
+  const hasCreatedRoomRef = useRef(false);
+
+  useEffect(() => {
+    if (hasCreatedRoomRef.current) {
+      return;
+    }
+
+    hasCreatedRoomRef.current = true;
+
+    void (async () => {
+      try {
+        const response = await createRoom();
+        const {
+          browserToken,
+          inviteUrl,
+          participantId,
+          role,
+          roomId,
+        } = response.data;
+
+        setHomeSession({
+          browserToken,
+          participantId,
+          roomId,
+          userRole: serverRoleToUserRole(role),
+        });
+        setInviteLink(inviteUrl);
+        console.log('방 생성 API 요청 성공', response);
+      } catch (error) {
+        console.error('방 생성 API 요청 실패', error);
+      }
+    })();
+  }, []);
+
   const copyInviteLink = useCallback(async () => {
     try {
-      await navigator.clipboard.writeText(INVITE_LINK);
+      await navigator.clipboard.writeText(inviteLink);
     } catch {
       const textarea = document.createElement('textarea');
-      textarea.value = INVITE_LINK;
+      textarea.value = inviteLink;
       textarea.setAttribute('readonly', '');
       textarea.style.position = 'fixed';
       textarea.style.opacity = '0';
@@ -21,7 +62,7 @@ const OnboardingPage = () => {
       document.execCommand('copy');
       document.body.removeChild(textarea);
     }
-  }, []);
+  }, [inviteLink]);
 
   const handleCopyLink = useCallback(() => {
     void copyInviteLink();
@@ -41,12 +82,14 @@ const OnboardingPage = () => {
       </section>
 
       <div className='mt-[3.2rem] flex h-[5.6rem] w-full max-w-[32.7rem] items-center justify-between rounded-[1.2rem] bg-white px-[2.4rem] text-left shadow-[0_0_0.4rem_0_var(--color-primary-200)]'>
-        <span className='typo-body-sb-16 text-neutral-300'>{INVITE_LINK}</span>
+        <span className='typo-body-sb-16 truncate text-neutral-300'>
+          {inviteLink}
+        </span>
         <button
           type='button'
           onClick={handleCopyLink}
           className='flex size-[2.4rem] items-center justify-center'
-          aria-label={`${INVITE_LINK} 링크 복사하기`}
+          aria-label={`${inviteLink} 링크 복사하기`}
         >
           <IcCopy aria-hidden className='size-[1.8rem] text-neutral-300' />
         </button>
