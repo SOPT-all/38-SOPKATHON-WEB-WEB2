@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
 import { swapRoomRoles } from '@/pages/home/api';
-import { type ServerUserRole, type UserRole } from '@/pages/home/types';
+import { type UserRole } from '@/pages/home/types';
 import { getHomeSession } from '@/pages/home/utils/home-session';
+import { serverRoleToUserRole } from '@/pages/home/utils/role';
 import {
   getStoredUserRole,
   setStoredUserRole,
@@ -13,9 +14,6 @@ export interface UseUserRoleReturn {
   selectUserRole: (nextRole: UserRole) => void;
   userRole: UserRole;
 }
-
-const serverRoleToUserRole = (role: ServerUserRole): UserRole =>
-  role === 'CHILD' ? 'child' : 'parent';
 
 export const useUserRole = (): UseUserRoleReturn => {
   const [userRole, setUserRole] = useState<UserRole>(getStoredUserRole);

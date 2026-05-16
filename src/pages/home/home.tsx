@@ -8,7 +8,7 @@ import { useAnswerProgress } from '@/shared/hooks';
 import StepBox from '@/shared/ui/StepBox';
 
 const HomePage = () => {
-  const { bubbleText, currentStep, hasAnsweredToday, title } =
+  const { bubbleText, currentStep, hasAnsweredToday, question, title } =
     useAnswerProgress();
   const characterImage = currentStep >= 3 ? characterMain : characterSad;
 
@@ -36,7 +36,10 @@ const HomePage = () => {
         <section className='mt-[-9.1rem] flex w-[32.7rem] flex-col'>
           <StepBox currentStep={currentStep} title={title} />
           <HomeCardDivider />
-          <HomeQuestionCard hasAnsweredToday={hasAnsweredToday} />
+          <HomeQuestionCard
+            hasAnsweredToday={hasAnsweredToday}
+            question={question}
+          />
         </section>
       </div>
     </>

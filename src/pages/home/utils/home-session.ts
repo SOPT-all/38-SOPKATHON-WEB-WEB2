@@ -1,16 +1,19 @@
+import { type HomeSession, type UserRole } from '@/pages/home/types';
 import {
-  type HomeSession,
-  type HomeSessionStorageValue,
-} from '@/pages/home/types';
-import {
-  assertUserRole,
   getStoredUserRole,
-  setStoredUserRole,
+  USER_ROLE_STORAGE_KEY,
 } from '@/pages/home/utils/user-role-storage';
 
 const ROOM_ID_KEY = 'roomId';
 const PARTICIPANT_ID_KEY = 'participantId';
 const BROWSER_TOKEN_KEY = 'browserToken';
+
+interface SetHomeSessionParams {
+  browserToken: string;
+  participantId: number;
+  roomId: number;
+  userRole: UserRole;
+}
 
 const getRequiredStorageValue = (key: string): string => {
   const value = localStorage.getItem(key);
@@ -39,14 +42,20 @@ export const getHomeSession = (): HomeSession => ({
   userRole: getStoredUserRole(),
 });
 
+export const getStoredBrowserToken = (): string =>
+  getRequiredStorageValue(BROWSER_TOKEN_KEY);
+
+export const getOptionalStoredBrowserToken = (): string | null =>
+  localStorage.getItem(BROWSER_TOKEN_KEY);
+
 export const setHomeSession = ({
   browserToken,
   participantId,
   roomId,
   userRole,
-}: HomeSessionStorageValue): void => {
+}: SetHomeSessionParams): void => {
   localStorage.setItem(BROWSER_TOKEN_KEY, browserToken);
   localStorage.setItem(PARTICIPANT_ID_KEY, String(participantId));
   localStorage.setItem(ROOM_ID_KEY, String(roomId));
-  setStoredUserRole(assertUserRole(userRole));
+  localStorage.setItem(USER_ROLE_STORAGE_KEY, userRole);
 };

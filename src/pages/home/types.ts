@@ -10,10 +10,3 @@ export interface HomeSession {
   roomId: number;
   userRole: UserRole;
 }
-
-export interface HomeSessionStorageValue {
-  browserToken: string;
-  participantId: number;
-  roomId: number;
-  userRole: UserRole;
-}

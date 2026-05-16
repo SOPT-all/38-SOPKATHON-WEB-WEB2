@@ -1,28 +1,38 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { type ServerUserRole, type UserRole } from '@/pages/home/types';
-import { setHomeSession } from '@/pages/home/utils/home-session';
+import {
+  getOptionalStoredBrowserToken,
+  setHomeSession,
+} from '@/pages/home/utils/home-session';
+import { serverRoleToUserRole } from '@/pages/home/utils/role';
 import { createRoom } from '@/pages/onboarding/api';
+import { routePath } from '@/routes/path';
 import { IcCopy } from '@/shared/assets/icons';
 import { TextButton } from '@/shared/ui';
 
 const INVITE_LINK = 'meomoot.site';
 
-const serverRoleToUserRole = (role: ServerUserRole): UserRole =>
-  role === 'CHILD' ? 'child' : 'parent';
-
 const OnboardingPage = () => {
   const [inviteLink, setInviteLink] = useState(INVITE_LINK);
-  const hasCreatedRoomRef = useRef(false);
+  const hasInitializedRef = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (hasCreatedRoomRef.current) {
+    if (hasInitializedRef.current) {
       return;
     }
 
-    hasCreatedRoomRef.current = true;
+    hasInitializedRef.current = true;
 
     void (async () => {
+      const browserToken = getOptionalStoredBrowserToken();
+
+      if (browserToken) {
+        void navigate(routePath.HOME, { replace: true });
+        return;
+      }
+
       try {
         const response = await createRoom();
         const {
@@ -45,7 +55,7 @@ const OnboardingPage = () => {
         console.error('방 생성 API 요청 실패', error);
       }
     })();
-  }, []);
+  }, [navigate]);
 
   const copyInviteLink = useCallback(async () => {
     try {
@@ -95,7 +105,10 @@ const OnboardingPage = () => {
         </button>
       </div>
 
-      <TextButton className='mt-[14.9rem] w-full max-w-[32.7rem]' size='large'>
+      <TextButton
+        className='mt-[14.9rem] w-full max-w-[32.7rem]'
+        size='large'
+      >
         시작하기
       </TextButton>
 
