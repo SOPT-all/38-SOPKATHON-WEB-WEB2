@@ -1,11 +1,15 @@
+import ChatContainer from './components/chat-container';
+
+type UserRole = 'parent' | 'child';
+
 const AnswerPage = () => {
+  const role = (localStorage.getItem('role') ?? 'child') as UserRole;
+
   return (
-    <section>
-      <h1>답변하기</h1>
-      {/* 질문 표시 */}
-      {/* 동영상 녹화/업로드 */}
-      {/* 답변 제출 */}
-    </section>
+    <div className='flex flex-col gap-[1.6rem] px-[2rem] py-[2rem]'>
+      {/* 답변 전 예시 */}
+      <ChatContainer role={role} opponentHasAnswer={false} />
+    </div>
   );
 };
 

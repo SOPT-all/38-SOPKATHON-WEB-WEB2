@@ -1,7 +1,7 @@
 import { IcMy } from '@/shared/assets/icons';
 import { imgLogo } from '@/shared/assets/images';
 
-const HomeHeader = () => {
+export const HomeHeader = () => {
   return (
     <header className='flex h-[5.6rem] w-full items-center justify-between bg-white px-[2.4rem]'>
       <img src={imgLogo} alt='머뭇' className='h-[2.6rem] w-[4.4rem]' />
@@ -16,5 +16,3 @@ const HomeHeader = () => {
     </header>
   );
 };
-
-export default HomeHeader;
