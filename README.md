@@ -1,6 +1,7 @@
-<div align="center">
+<img width="2044" height="3222" alt="image" src="https://github.com/user-attachments/assets/031a3a7a-7b05-412b-9dc2-d9def8323deb" /><div align="center">
 <h2> 머뭇 </h2>
-<img width="3754" height="1113" alt="와이어프레임" src="https://github.com/user-attachments/assets/29c479c1-2c81-4c93-91f1-eb6cd4ffb836" />
+<img width="1920" height="3558" alt="image" src="https://github.com/user-attachments/assets/1743adf8-bb86-4e64-bdd1-b246481d1a24" />
+
 <p>부모와 자녀가 서로에게 머뭇거리던 말을 꺼내는 공간</p>
 </div>
 
@@ -200,4 +201,5 @@ src/
 <img width="5712" height="4284" alt="before" src="https://github.com/user-attachments/assets/5dda3a4b-bbee-45e4-9106-28d1524eb029" />
 
 <h3>After</h3>
-<img src="" alt="웨비 팀원들 사진 (after)" />
+<img width="2044" height="3222" alt="image" src="https://github.com/user-attachments/assets/9eb5b194-0607-4c1c-9e98-cd9e455366a1" />
+
