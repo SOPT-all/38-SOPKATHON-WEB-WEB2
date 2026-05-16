@@ -68,13 +68,18 @@ export default defineConfig([
       ],
       'simple-import-sort/exports': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unsafe-assignment': 'warn',
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/naming-convention': [
         'error',
         {
           selector: 'interface',
           format: ['PascalCase'],
-          custom: { regex: 'Props$', match: true },
+          custom: { regex: '(Props|Interface)$', match: false },
+          filter: {
+            regex: '^(Question|Answer|ApiResponse|.*Props)$',
+            match: false,
+          },
         },
         {
           selector: 'variable',
