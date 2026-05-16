@@ -1,2 +1,1 @@
-// 공통 UI 컴포넌트들
-export {};
+export { default as TextButton } from './text-button/TextButton';
