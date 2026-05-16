@@ -15,8 +15,14 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: routePath.ARCHIVE, element: <ArchivePage /> },
-      { path: routePath.ANSWER, element: <AnswerPage /> },
-      { path: routePath.ANSWER_DETAIL, element: <AnswerDetailPage /> },
     ],
   },
+  {
+    path: routePath.ANSWER,
+    element: <AnswerPage />,
+  },
+  {
+    path: routePath.ANSWER_DETAIL,
+    element: <AnswerDetailPage />,
+  }
 ]);
