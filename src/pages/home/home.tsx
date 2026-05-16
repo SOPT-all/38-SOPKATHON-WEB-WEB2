@@ -1,4 +1,3 @@
-import { IcAlertCircle } from '@/shared/assets/icons';
 const HomePage = () => {
   return (
     <div>
@@ -6,7 +5,6 @@ const HomePage = () => {
       {/* 오늘의 질문 */}
       {/* 지난 답변 4개 */}
       {/* 답변하러가기 버튼 */}
-      <IcAlertCircle />
     </div>
   );
 };
