@@ -29,10 +29,10 @@ const OnboardingPage = () => {
   }, [copyInviteLink]);
 
   return (
-    <main className='flex min-h-dvh flex-col items-center bg-background px-[2.4rem] pt-[7.4rem] pb-[3.4rem]'>
+    <main className='bg-background flex min-h-dvh flex-col items-center px-[2.4rem] pt-[7.4rem] pb-[3.4rem]'>
       <img src={imgLogo} alt='머뭇' className='h-[2.6rem] w-[4.4rem]' />
 
-      <div className='mt-[5.4rem] flex size-[20rem] items-center justify-center overflow-hidden rounded-full border border-primary-400 bg-linear-[141deg,rgba(255,208,232,0.4)_4.72%,rgba(255,240,248,0.4)_91.87%]'>
+      <div className='border-primary-400 mt-[5.4rem] flex size-[20rem] items-center justify-center overflow-hidden rounded-full border bg-linear-[141deg,rgba(255,208,232,0.4)_4.72%,rgba(255,240,248,0.4)_91.87%]'>
         <img
           src={characterMain}
           alt='머뭇 캐릭터'
