@@ -1,9 +1,11 @@
-import OnboardingPage from '@/pages/onboarding/onboarding';
+import { RouterProvider } from 'react-router-dom';
+
+import { router } from '@/routes';
 
 import '@/shared/styles/App.css';
 
 function App() {
-  return <OnboardingPage />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -53,12 +53,12 @@ export default function QuestionBox({
       {...props}
     >
       {currentVariant === 'today' && (
-        <figure className='from-primary-100 to-primary-50 outline-primary-400 flex h-[7rem] w-[7rem] shrink-0 items-center justify-center overflow-hidden rounded-full bg-gradient-to-br outline outline-[0.035rem] outline-offset-[-0.035rem]'>
+        <figure className='from-primary-100 to-primary-50 outline-primary-400 relative h-[6.4rem] w-[6.4rem] shrink-0 overflow-hidden rounded-full bg-gradient-to-br outline outline-[0.035rem] outline-offset-[-0.035rem]'>
           {imageSrc && (
             <img
               src={imageSrc}
               alt={imageAlt}
-              className='h-full w-full object-cover'
+              className='absolute top-[1rem] left-[0.6rem] h-[7rem] w-[7rem] object-cover'
             />
           )}
         </figure>

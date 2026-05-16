@@ -9,12 +9,14 @@ interface ChatContainerProps {
   onCompleteAnswer?: () => void;
   opponentHasAnswer: boolean;
   role: UserRole;
+  roomQuestionId: number;
 }
 
 const ChatContainer = ({
   onCompleteAnswer,
   opponentHasAnswer,
   role,
+  roomQuestionId,
 }: ChatContainerProps) => {
   return (
     <section className='flex w-full flex-col gap-[2.4rem]'>
@@ -31,7 +33,10 @@ const ChatContainer = ({
         <Chip size='small' variant='me'>
           나
         </Chip>
-        <MyAnswerCard onCompleteAnswer={onCompleteAnswer} />
+        <MyAnswerCard
+          roomQuestionId={roomQuestionId}
+          onCompleteAnswer={onCompleteAnswer}
+        />
       </div>
     </section>
   );
