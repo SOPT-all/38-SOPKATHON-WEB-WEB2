@@ -1,0 +1,34 @@
+name: Deploy (Mirror to Personal Repo)
+
+on:
+  push:
+    branches: [main, develop]
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    name: Push to personal deploy repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Push to personal repo
+        env:
+          PERSONAL_REPO_TOKEN: ${{ secrets.PERSONAL_REPO_TOKEN }}
+          PERSONAL_REPO_OWNER: ${{ secrets.PERSONAL_REPO_OWNER }}
+          PERSONAL_REPO_NAME: ${{ secrets.PERSONAL_REPO_NAME }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git remote add personal "https://x-access-token:${PERSONAL_REPO_TOKEN}@github.com/${PERSONAL_REPO_OWNER}/${PERSONAL_REPO_NAME}.git"
+          git push personal "HEAD:refs/heads/${BRANCH}" --force
