@@ -23,7 +23,7 @@ const AnswerLayout = () => {
   const isAnswerDetailPage = pathname !== routePath.ANSWER;
 
   return (
-    <main className='min-h-dvh bg-background'>
+    <main className='bg-background min-h-dvh'>
       <header className='flex items-center px-[2rem] pt-[1.6rem] pb-[1.2rem]'>
         {isAnswerDetailPage ? (
           <BackButton delta={-1} />
