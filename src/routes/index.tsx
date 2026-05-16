@@ -24,5 +24,5 @@ export const router = createBrowserRouter([
   {
     path: routePath.ANSWER_DETAIL,
     element: <AnswerDetailPage />,
-  }
+  },
 ]);
