@@ -2,7 +2,7 @@ import { IcCamera } from '@/shared/assets/icons';
 import TextButton from '@/shared/ui/text-button/TextButton';
 
 interface MyAnswerCardProps {
-  onCompleteAnswer: () => void;
+  onCompleteAnswer?: () => void;
 }
 
 const MyAnswerCard = ({ onCompleteAnswer }: MyAnswerCardProps) => {

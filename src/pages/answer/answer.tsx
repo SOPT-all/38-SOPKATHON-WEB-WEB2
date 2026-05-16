@@ -1,25 +1,26 @@
-import { useNavigate } from 'react-router-dom';
-
-import { routePath } from '@/routes/path';
-import { useUserRole } from '@/shared/hooks';
+import { QuestionBox } from '@/shared/ui';
 
 import ChatContainer from './components/chat-container';
 
-const AnswerPage = () => {
-  const navigate = useNavigate();
-  const { userRole } = useUserRole();
+type UserRole = 'parent' | 'child';
 
-  const handleCompleteAnswer = () => {
-    void navigate(routePath.HOME);
-  };
+const AnswerPage = () => {
+  const role = (localStorage.getItem('role') ?? 'child') as UserRole;
 
   return (
-    <div className='flex flex-col gap-[1.6rem] px-[2rem] py-[2rem]'>
-      <ChatContainer
-        role={userRole}
-        opponentHasAnswer={false}
-        onCompleteAnswer={handleCompleteAnswer}
-      />
+    <div className='flex flex-col items-center gap-[2.4rem]'>
+      <div className='w-[32.7rem] pt-[2.4rem]'>
+        <QuestionBox
+          variant='today'
+          question='엄마가 좋아하는 음식이 뭐야?'
+          date={new Date()}
+          imageSrc=''
+          imageAlt='오늘의 질문 이미지'
+        />
+      </div>
+      <div className='w-[32.7rem] pb-[13.4rem]'>
+        <ChatContainer role={role} opponentHasAnswer={false} />
+      </div>
     </div>
   );
 };
