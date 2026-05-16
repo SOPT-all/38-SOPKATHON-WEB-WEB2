@@ -68,6 +68,7 @@ export default defineConfig([
       ],
       'simple-import-sort/exports': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unsafe-assignment': 'warn',
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/naming-convention': [
         'error',
