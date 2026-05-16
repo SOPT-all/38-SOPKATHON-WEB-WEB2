@@ -36,12 +36,12 @@ privateInstance.interceptors.request.use(
     }
     return config;
   },
-  (error: unknown) => Promise.reject(normalizeError(error))
+  (error: unknown) => Promise.reject(normalizeError(error)),
 );
 
 privateInstance.interceptors.response.use(
   (response) => response,
   (error: unknown) => {
     return Promise.reject(normalizeError(error));
-  }
+  },
 );
