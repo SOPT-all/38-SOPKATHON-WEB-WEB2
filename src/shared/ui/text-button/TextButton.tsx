@@ -54,7 +54,7 @@ export default function TextButton({
     >
       <span>{children}</span>
       {rightIcon && (
-        <span className="[&>svg]:h-[1.8rem] [&>svg]:w-[1.8rem] [&>svg]:text-neutral-50">
+        <span className='[&>svg]:h-[1.8rem] [&>svg]:w-[1.8rem] [&>svg]:text-neutral-50'>
           {rightIcon}
         </span>
       )}
