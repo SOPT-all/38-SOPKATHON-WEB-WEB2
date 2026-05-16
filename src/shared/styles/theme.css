@@ -1,0 +1,54 @@
+@theme {
+  /* system color */
+  --color-black: #010101;
+  --color-white: #ffffff;
+  --color-muted: #988f90;
+  --color-background: #fff8fc;
+
+  /* Neutral colors */
+  --color-neutral-900: #161616;
+  --color-neutral-800: #1e1e1e;
+  --color-neutral-700: #242424;
+  --color-neutral-600: #303030;
+  --color-neutral-500: #3b3b3b;
+  --color-neutral-400: #575555;
+  --color-neutral-300: #636363;
+  --color-neutral-200: #c4c1c2;
+  --color-neutral-100: #d8d8da;
+  --color-neutral-50: #f7f7f8;
+
+  /* Primary colors */
+  --color-primary-900: #6b2c4c;
+  --color-primary-800: #8c3964;
+  --color-primary-700: #b54a81;
+  --color-primary-600: #e85fa6;
+  --color-primary-500: #ff68b6;
+  --color-primary-400: #ff86c5;
+  --color-primary-300: #ff9ace;
+  --color-primary-200: #ffbadd;
+  --color-primary-100: #ffd0e8;
+  --color-primary-50: #fff0f8;
+}
+
+@theme {
+  --font-pretendard: 'Pretendard', ui-sans-serif, system-ui, sans-serif;
+
+  --typo-head-sb-24: 2.4rem;
+  --typo-head-r-24: 2.4rem;
+  --typo-head-sb-22: 2.2rem;
+  --typo-head-r-22: 2.2rem;
+  --typo-head-sb-20: 2rem;
+  --typo-head-r-20: 2rem;
+  --typo-head-sb-18: 1.8rem;
+  --typo-head-r-18: 1.8rem;
+
+  --typo-body-sb-16: 1.6rem;
+  --typo-body-r-16: 1.6rem;
+  --typo-body-sb-14: 1.4rem;
+  --typo-body-r-14: 1.4rem;
+
+  --typo-caption-sb-12: 1.2rem;
+  --typo-caption-r-12: 1.2rem;
+  --typo-caption-sb-10: 1rem;
+  --typo-caption-r-10: 1rem;
+}

@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+@import './theme.css';
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+    font-size: 62.5%;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-pretendard);
+  }
+
+  button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .typo-head-sb-24 {
+    font-size: var(--typo-head-sb-24);
+    font-weight: 600;
+    line-height: 3.12rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-head-r-24 {
+    font-size: var(--typo-head-r-24);
+    font-weight: 400;
+    line-height: 3.12rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-head-sb-22 {
+    font-size: var(--typo-head-sb-22);
+    font-weight: 600;
+    line-height: 2.86rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-head-r-22 {
+    font-size: var(--typo-head-r-22);
+    font-weight: 400;
+    line-height: 2.86rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-head-sb-20 {
+    font-size: var(--typo-head-sb-20);
+    font-weight: 600;
+    line-height: 2.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-head-r-20 {
+    font-size: var(--typo-head-r-20);
+    font-weight: 400;
+    line-height: 2.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-head-sb-18 {
+    font-size: var(--typo-head-sb-18);
+    font-weight: 600;
+    line-height: 2.34rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-head-r-18 {
+    font-size: var(--typo-head-r-18);
+    font-weight: 400;
+    line-height: 2.34rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-body-sb-16 {
+    font-size: var(--typo-body-sb-16);
+    font-weight: 600;
+    line-height: 2.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-body-r-16 {
+    font-size: var(--typo-body-r-16);
+    font-weight: 400;
+    line-height: 2.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-body-sb-14 {
+    font-size: var(--typo-body-sb-14);
+    font-weight: 600;
+    line-height: 2.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-body-r-14 {
+    font-size: var(--typo-body-r-14);
+    font-weight: 400;
+    line-height: 2.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-caption-sb-12 {
+    font-size: var(--typo-caption-sb-12);
+    font-weight: 600;
+    line-height: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-caption-r-12 {
+    font-size: var(--typo-caption-r-12);
+    font-weight: 400;
+    line-height: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-caption-sb-10 {
+    font-size: var(--typo-caption-sb-10);
+    font-weight: 600;
+    line-height: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .typo-caption-r-10 {
+    font-size: var(--typo-caption-r-10);
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+}
