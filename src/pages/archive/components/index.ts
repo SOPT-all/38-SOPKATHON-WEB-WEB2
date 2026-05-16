@@ -1,3 +1,3 @@
-import RecordCard from './record-card/record-card';
+import RecordCard from '@/pages/archive/components/record-card/record-card';
 
 export { RecordCard };
