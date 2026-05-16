@@ -2,28 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 
 import { IcMy } from '@/shared/assets/icons';
 import { imgLogo } from '@/shared/assets/images';
+import { useUserRole } from '@/shared/hooks';
+import { type UserRole } from '@/shared/mocks/answer-progress.mock';
 import { cn } from '@/shared/utils/cn';
-
-type UserRole = 'parent' | 'child';
-
-const roleStorageKey = 'role';
 
 const roleOptions = [
   { label: '부모님', value: 'parent' },
   { label: '자녀', value: 'child' },
 ] as const;
 
-const getStoredRole = (): UserRole => {
-  const storedRole = localStorage.getItem(roleStorageKey);
-
-  return storedRole === 'parent' || storedRole === 'child'
-    ? storedRole
-    : 'parent';
-};
-
 const HomeHeader = () => {
   const [isRoleMenuOpen, setIsRoleMenuOpen] = useState(false);
-  const [selectedRole, setSelectedRole] = useState<UserRole>(getStoredRole);
+  const { setUserRole, userRole } = useUserRole();
   const roleMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,8 +34,7 @@ const HomeHeader = () => {
   }, []);
 
   const handleRoleSelect = (role: UserRole) => {
-    setSelectedRole(role);
-    localStorage.setItem(roleStorageKey, role);
+    setUserRole(role);
     setIsRoleMenuOpen(false);
   };
 
@@ -75,7 +64,7 @@ const HomeHeader = () => {
 
             <div className='flex w-full items-center rounded-[1rem] bg-neutral-50'>
               {roleOptions.map(({ label, value }) => {
-                const isSelected = selectedRole === value;
+                const isSelected = userRole === value;
 
                 return (
                   <button
