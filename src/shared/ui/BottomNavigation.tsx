@@ -11,10 +11,10 @@ const navigationItems = [
 const BottomNavigation = () => {
   return (
     <nav
-      aria-label="하단 내비게이션"
-      className="fixed bottom-0 left-1/2 z-10 w-full min-w-150 max-w-172 -translate-x-1/2 rounded-t-[2.4rem] bg-white px-[5.1rem] pb-[2.4rem] pt-[1.2rem] shadow-[0_-0.4rem_1rem_rgba(0,0,0,0.05)]"
+      aria-label='하단 내비게이션'
+      className='fixed bottom-0 left-1/2 z-10 w-full max-w-172 min-w-150 -translate-x-1/2 rounded-t-[2.4rem] bg-white px-[5.1rem] pt-[1.2rem] pb-[2.4rem] shadow-[0_-0.4rem_1rem_rgba(0,0,0,0.05)]'
     >
-      <ul className="flex items-center justify-center gap-[12.7rem]">
+      <ul className='flex items-center justify-center gap-[12.7rem]'>
         {navigationItems.map(({ label, path }) => (
           <li key={path}>
             <NavLink
