@@ -10,6 +10,7 @@ import IcBookmarkSvg from './ic_bookmark.svg?react';
 import IcBookmarkFilledSvg from './ic_bookmark_filled.svg?react';
 import IcCalendarSvg from './ic_calendar.svg?react';
 import IcCameraSvg from './ic_camera.svg?react';
+import IcCameraFilledSvg from './ic_camera_filled.svg?react';
 import IcCheckSvg from './ic_check.svg?react';
 import IcChevronDownSvg from './ic_chevron_down.svg?react';
 import IcChevronRightSvg from './ic_chevron_right.svg?react';
@@ -28,6 +29,7 @@ import IcMySvg from './ic_my.svg?react';
 import IcMyFilledSvg from './ic_my_filled.svg?react';
 import IcPlusSvg from './ic_plus.svg?react';
 import IcRecordSvg from './ic_record.svg?react';
+import IcRecordFilledSvg from './ic_record_fiiled.svg?react';
 import IcSearchSvg from './ic_search.svg?react';
 import IcShareSvg from './ic_share.svg?react';
 import IcSocialSvg from './ic_social.svg?react';
@@ -86,6 +88,11 @@ export const IcCamera = ({
   className = 'text-neutral-200',
   ...props
 }: SvgProps) => <IcCameraSvg className={className} {...props} />;
+
+export const IcCameraFilled = ({
+  className = 'text-neutral-200',
+  ...props
+}: SvgProps) => <IcCameraFilledSvg className={className} {...props} />;
 
 export const IcCheck = ({
   className = 'text-neutral-200',
@@ -176,6 +183,11 @@ export const IcRecord = ({
   className = 'text-neutral-200',
   ...props
 }: SvgProps) => <IcRecordSvg className={className} {...props} />;
+
+export const IcRecordFilled = ({
+  className = 'text-neutral-200',
+  ...props
+}: SvgProps) => <IcRecordFilledSvg className={className} {...props} />;
 
 export const IcSearch = ({
   className = 'text-neutral-200',
