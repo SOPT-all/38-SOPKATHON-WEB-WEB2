@@ -35,13 +35,8 @@ const OnboardingPage = () => {
 
       try {
         const response = await createRoom();
-        const {
-          browserToken,
-          inviteUrl,
-          participantId,
-          role,
-          roomId,
-        } = response.data;
+        const { browserToken, inviteUrl, participantId, role, roomId } =
+          response.data;
 
         setHomeSession({
           browserToken,
@@ -105,10 +100,7 @@ const OnboardingPage = () => {
         </button>
       </div>
 
-      <TextButton
-        className='mt-[14.9rem] w-full max-w-[32.7rem]'
-        size='large'
-      >
+      <TextButton className='mt-[14.9rem] w-full max-w-[32.7rem]' size='large'>
         시작하기
       </TextButton>
 
