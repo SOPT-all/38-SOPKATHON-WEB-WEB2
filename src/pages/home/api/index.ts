@@ -1,4 +1,5 @@
-import { privateInstance } from '@/shared/api/axios';
+import { privateInstance } from '@/shared/api';
+export { swapRoomRoles } from './swap-room-roles';
 
 export interface HomeData {
   selectedMode: string;

@@ -1,15 +1,42 @@
-export interface AnswerDetail {
-  question: string;
-  questionDate: string;
-  parentVideoUrl: string;
-  parentTime: string;
-  myVideoUrl: string;
-  myTime: string;
+import { publicInstance } from '@/shared/api/axios';
+
+export type Role = 'PARENT' | 'CHILD';
+
+export interface AnswerInfo {
+  role: Role;
+  videoUrl: string;
+  answeredAt: string;
+  isMine: boolean;
 }
 
-// TODO: 서버 endpoint 확정되면 axios 호출로 교체
+export interface AnswerDetail {
+  roomQuestionId: number;
+  question: string;
+  completedAt: string;
+  answers: AnswerInfo[];
+}
+
+interface AnswerDetailResponse {
+  success: boolean;
+  data: AnswerDetail;
+  error: { code: number; message: string } | null;
+}
+
+const BROWSER_TOKEN_KEY = 'browserToken';
+
+const getBrowserToken = (): string => {
+  const token = localStorage.getItem(BROWSER_TOKEN_KEY);
+  if (!token) throw new Error('browserToken이 localStorage에 없습니다');
+  return token;
+};
+
 export const getAnswerDetail = async (
-  _id: string,
+  id: string,
 ): Promise<AnswerDetail | null> => {
-  return Promise.resolve(null);
+  const token = getBrowserToken();
+  const { data } = await publicInstance.get<AnswerDetailResponse>(
+    `/api/records/${id}`,
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+  return data.data;
 };
