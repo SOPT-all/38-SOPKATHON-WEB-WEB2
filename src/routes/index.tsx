@@ -4,9 +4,9 @@ import AnswerPage from '@/pages/answer/answer';
 import AnswerDetailPage from '@/pages/answer-detail/answer-detail';
 import ArchivePage from '@/pages/archive/archive';
 import HomePage from '@/pages/home/home';
-
-import Layout from './layout';
-import { routePath } from './path';
+import AnswerLayout from '@/routes/answerLayout';
+import Layout from '@/routes/layout';
+import { routePath } from '@/routes/path';
 
 export const router = createBrowserRouter([
   {
@@ -18,11 +18,10 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: routePath.ANSWER,
-    element: <AnswerPage />,
-  },
-  {
-    path: routePath.ANSWER_DETAIL,
-    element: <AnswerDetailPage />,
+    element: <AnswerLayout />,
+    children: [
+      { path: routePath.ANSWER, element: <AnswerPage /> },
+      { path: routePath.ANSWER_DETAIL, element: <AnswerDetailPage /> },
+    ],
   },
 ]);

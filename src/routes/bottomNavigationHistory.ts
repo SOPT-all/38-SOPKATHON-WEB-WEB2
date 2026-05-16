@@ -1,4 +1,4 @@
-import { routePath } from './path';
+import { routePath } from '@/routes/path';
 
 export const bottomNavigationHistoryKey = 'lastBottomNavigationPath';
 
