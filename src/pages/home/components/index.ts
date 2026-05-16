@@ -1,2 +1,1 @@
-// 홈 페이지 전용 컴포넌트들 (질문 카드, 답변 미리보기 등)
-export {};
+export { default as QuestionCard } from './QuestionCard';
