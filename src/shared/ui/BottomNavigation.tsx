@@ -1,33 +1,66 @@
 import { NavLink } from 'react-router-dom';
 
 import { routePath } from '@/routes/path';
+import {
+  IcHome,
+  IcHomeFilled,
+  IcRecord,
+  IcRecordFilled,
+} from '@/shared/assets/icons';
 import { cn } from '@/shared/utils/cn';
 
 const navigationItems = [
-  { label: '홈', path: routePath.HOME },
-  { label: '기록', path: routePath.ARCHIVE },
+  {
+    label: '홈',
+    path: routePath.HOME,
+    Icon: IcHome,
+    ActiveIcon: IcHomeFilled,
+  },
+  {
+    label: '기록',
+    path: routePath.ARCHIVE,
+    Icon: IcRecord,
+    ActiveIcon: IcRecordFilled,
+  },
 ] as const;
 
 const BottomNavigation = () => {
   return (
     <nav
       aria-label='하단 내비게이션'
-      className='fixed bottom-0 left-1/2 z-10 w-full max-w-172 min-w-150 -translate-x-1/2 rounded-t-[2.4rem] bg-white px-[5.1rem] pt-[1.2rem] pb-[2.4rem] shadow-[0_-0.4rem_1rem_rgba(0,0,0,0.05)]'
+      className='fixed bottom-0 left-1/2 z-10 w-full max-w-[43rem] -translate-x-1/2 overflow-hidden rounded-t-[1.6rem] border-t border-neutral-100 bg-white p-[0.8rem]'
     >
-      <ul className='flex items-center justify-center gap-[12.7rem]'>
-        {navigationItems.map(({ label, path }) => (
-          <li key={path}>
+      <ul className='flex items-center justify-center'>
+        {navigationItems.map(({ label, path, Icon, ActiveIcon }) => (
+          <li key={path} className='min-w-0 flex-1'>
             <NavLink
               to={path}
               end={path === routePath.HOME}
-              className={({ isActive }) =>
-                cn(
-                  'typo-caption-sb-10 block min-w-[2.2rem] py-[1.35rem] text-center text-neutral-200',
-                  isActive && 'text-primary-500',
-                )
-              }
+              className='flex flex-col items-center gap-[0.2rem] rounded-full px-[2rem] py-[0.8rem]'
             >
-              {label}
+              {({ isActive }) => {
+                const NavigationIcon = isActive ? ActiveIcon : Icon;
+
+                return (
+                  <>
+                    <NavigationIcon
+                      className={cn(
+                        'size-[2.4rem]',
+                        isActive ? 'text-primary-500' : 'text-neutral-100',
+                      )}
+                      aria-hidden='true'
+                    />
+                    <span
+                      className={cn(
+                        isActive ? 'typo-caption-sb-12' : 'typo-caption-r-12',
+                        isActive ? 'text-neutral-900' : 'text-neutral-100',
+                      )}
+                    >
+                      {label}
+                    </span>
+                  </>
+                );
+              }}
             </NavLink>
           </li>
         ))}
