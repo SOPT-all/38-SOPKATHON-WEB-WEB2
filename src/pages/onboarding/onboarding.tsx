@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { IcCopy } from '@/shared/assets/icons';
+import { characterMain, imgLogo } from '@/shared/assets/images';
 import { TextButton } from '@/shared/ui';
 
 const INVITE_LINK = 'meomoot.site';
@@ -29,14 +30,20 @@ const OnboardingPage = () => {
 
   return (
     <main className='bg-background flex min-h-dvh flex-col items-center px-[2.4rem] pt-[7.4rem] pb-[3.4rem]'>
-      <div aria-hidden className='h-[3.1rem] w-[7.2rem]' />
+      <img src={imgLogo} alt='머뭇' className='h-[2.6rem] w-[4.4rem]' />
 
-      <div aria-hidden className='mt-[5.4rem] size-[20rem]' />
+      <div className='border-primary-400 mt-[5.4rem] flex size-[20rem] items-center justify-center overflow-hidden rounded-full border bg-linear-[141deg,rgba(255,208,232,0.4)_4.72%,rgba(255,240,248,0.4)_91.87%]'>
+        <img
+          src={characterMain}
+          alt='머뭇 캐릭터'
+          className='mt-[1.2rem] ml-[1.4rem] h-[22.4rem] w-[28.3rem] max-w-none object-contain'
+        />
+      </div>
 
       <section className='mt-[1.6rem] flex flex-col items-center text-center'>
         <h1 className='typo-head-sb-24 text-neutral-800'>가족을 초대해요</h1>
         <p className='typo-body-r-14 mt-[1.6rem] whitespace-pre-line text-neutral-300'>
-          {'아래 링크를 복사해서\n가족에게 보내주세요!'}
+          {'아래 링크를 복사해서\n가족에게 보내주세요'}
         </p>
       </section>
 
@@ -57,7 +64,7 @@ const OnboardingPage = () => {
       </TextButton>
 
       <p className='typo-caption-r-12 mt-[1.6rem] text-neutral-200'>
-        링크를 받은 가족이 들어오면 머뭇이 시작돼요
+        링크를 받은 가족이 들어오면 머뭇을 시작해요
       </p>
     </main>
   );
