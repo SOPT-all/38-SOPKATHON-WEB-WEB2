@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import {
-  type AnswerDetail,
-  getAnswerDetail,
-} from '@/pages/answer-detail/api';
+import { type AnswerDetail, getAnswerDetail } from '@/pages/answer-detail/api';
 import { Chip, Video } from '@/shared/ui';
 
 const AnswerDetailPage = () => {
@@ -26,9 +23,7 @@ const AnswerDetailPage = () => {
         <Chip variant='question'>완료된 질문</Chip>
         <div className='flex flex-col gap-[0.4rem]'>
           <h2 className='typo-body-sb-14 text-neutral-800'>{data.question}</h2>
-          <p className='typo-body-r-14 text-neutral-300'>
-            {data.questionDate}
-          </p>
+          <p className='typo-body-r-14 text-neutral-300'>{data.questionDate}</p>
         </div>
       </article>
 
