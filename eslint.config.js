@@ -74,7 +74,11 @@ export default defineConfig([
         {
           selector: 'interface',
           format: ['PascalCase'],
-          custom: { regex: 'Props$', match: true },
+          custom: { regex: '(Props|Interface)$', match: false },
+          filter: {
+            regex: '^(Question|Answer|ApiResponse|.*Props)$',
+            match: false,
+          },
         },
         {
           selector: 'variable',
