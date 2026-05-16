@@ -1,2 +1,2 @@
+export { HomeHeader } from './home-header';
 export { default as QuestionCard } from './QuestionCard';
-export { default as HomeHeader } from './home-header';

@@ -1,4 +1,4 @@
-import HomeHeader from '@/pages/home/components/home-header';
+import { HomeHeader } from '@/pages/home/components';
 
 const HomePage = () => {
   return (
