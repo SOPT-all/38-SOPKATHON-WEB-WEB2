@@ -1,4 +1,4 @@
-<img width="2044" height="3222" alt="image" src="https://github.com/user-attachments/assets/031a3a7a-7b05-412b-9dc2-d9def8323deb" /><div align="center">
+<div align="center">
 <h2> 머뭇 </h2>
 <img width="1920" height="3558" alt="image" src="https://github.com/user-attachments/assets/1743adf8-bb86-4e64-bdd1-b246481d1a24" />
 
