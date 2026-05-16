@@ -1,12 +1,14 @@
 import { publicInstance } from '@/shared/api';
 
+import { type ServerUserRole } from '../types';
+
 interface SwapRoomRolesRequest {
   browserToken: string;
 }
 
 interface SwapRoomRolesParticipant {
   participantId: number;
-  role: 'CHILD' | 'GUARDIAN' | 'PARENT';
+  role: ServerUserRole;
 }
 
 interface SwapRoomRolesResponse {

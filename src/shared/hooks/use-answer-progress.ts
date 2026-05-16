@@ -1,8 +1,5 @@
-import {
-  type AnswerStep,
-  mockAnswerProgress,
-  type UserRole,
-} from '@/shared/mocks/answer-progress.mock';
+import { type AnswerStep, type UserRole } from '@/pages/home/types';
+import { getStoredUserRole } from '@/pages/home/utils/user-role-storage';
 
 interface UseAnswerProgressReturn {
   bubbleText: string;
@@ -23,7 +20,10 @@ const answeredBubbleText = '오늘도 선뜻 다가가볼까요?';
 const unansweredBubbleText = '답장을 받지 못해 멀어지는 중이에요..';
 
 export const useAnswerProgress = (): UseAnswerProgressReturn => {
-  const { currentStep, hasAnsweredToday, userRole } = mockAnswerProgress;
+  // TODO: 홈 조회 API 연결 후 응답 값으로 교체
+  const currentStep: AnswerStep = 1;
+  const hasAnsweredToday = false;
+  const userRole: UserRole = getStoredUserRole();
 
   return {
     bubbleText: hasAnsweredToday ? answeredBubbleText : unansweredBubbleText,
