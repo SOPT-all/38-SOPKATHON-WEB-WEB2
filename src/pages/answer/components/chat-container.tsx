@@ -12,9 +12,9 @@ interface ChatContainerProps {
 
 const ChatContainer = ({ role, opponentHasAnswer }: ChatContainerProps) => {
   return (
-    <section className='flex flex-col gap-[2.4rem]'>
+    <section className='flex w-full flex-col gap-[2.4rem]'>
       {/* 상대방 */}
-      <div className='flex w-[32.7rem] flex-col items-start gap-[0.8rem]'>
+      <div className='flex w-full flex-col items-start gap-[0.8rem]'>
         <Chip size='small' variant={opponentHasAnswer ? 'you' : 'youYet'}>
           {role === 'child' ? '부모님' : '자녀'}
         </Chip>
@@ -22,7 +22,7 @@ const ChatContainer = ({ role, opponentHasAnswer }: ChatContainerProps) => {
       </div>
 
       {/* 나 */}
-      <div className='flex w-[32.7rem] flex-col items-end gap-[0.8rem] self-end'>
+      <div className='flex w-full flex-col items-end gap-[0.8rem]'>
         <Chip size='small' variant='me'>
           나
         </Chip>
