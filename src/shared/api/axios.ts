@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-const BASE_URL: string | undefined = (
-  import.meta.env as { readonly VITE_API_BASE_URL?: string }
-).VITE_API_BASE_URL;
+// prod에선 Vercel rewrites가 /api/* → 서버 도메인 프록시 (CORS 우회)
+// dev에선 .env.local의 VITE_API_BASE_URL 사용
+const BASE_URL: string | undefined = import.meta.env.PROD
+  ? ''
+  : (import.meta.env as { readonly VITE_API_BASE_URL?: string })
+      .VITE_API_BASE_URL;
 
 const normalizeError = (error: unknown): Error => {
   if (error instanceof Error) {

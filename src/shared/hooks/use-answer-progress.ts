@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { getHome, type GetHomeData } from '@/pages/home/api/get-home';
 import { type AnswerStep, type UserRole } from '@/pages/home/types';
@@ -9,7 +8,6 @@ import {
   getStoredUserRole,
   setStoredUserRole,
 } from '@/pages/home/utils/user-role-storage';
-import { routePath } from '@/routes/path';
 
 interface UseAnswerProgressReturn {
   bubbleText: string;
@@ -61,7 +59,6 @@ const getAnswerProgressState = ({
 };
 
 export const useAnswerProgress = (): UseAnswerProgressReturn => {
-  const navigate = useNavigate();
   const [answerProgress, setAnswerProgress] = useState<AnswerProgressState>(
     initialAnswerProgressState,
   );
@@ -77,11 +74,9 @@ export const useAnswerProgress = (): UseAnswerProgressReturn => {
         console.log('홈 조회 API 요청 성공', response);
       } catch (error) {
         console.error('홈 조회 API 요청 실패', error);
-        alert('상대방이 아직 접속하지 않았어요');
-        void navigate(routePath.ONBOARDING, { replace: true });
       }
     })();
-  }, [navigate]);
+  }, []);
 
   return answerProgress;
 };
